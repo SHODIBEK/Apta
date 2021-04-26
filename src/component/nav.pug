@@ -1,0 +1,72 @@
+
+mixin menu(menuSelected)
+    nav.menu.header__nav
+        ul.menu__list
+            each menuItem in nav
+                +menu_item(menuItem, menuSelected)
+
+mixin menu_item(menuItem, menuSelected)
+    li.menu__item(class!=(menuItem.subnav.length > 0 ? 'menu__item-submenu' : ''))
+        if menuItem.subnav.length > 0
+            .submenu
+                each submenuItem in menuItem.subnav
+                    .submenu__item
+                        a.submenu__link(href=`${submenuItem.link}`)!=submenuItem.title
+        a.menu__link(href!=(menuItem.subnav.length > 0 ? 'javascript:void(0);' : menuItem.link) class!=(menuSelected == menuItem.title ? "is-current" : ""))
+            span!=menuItem.title
+            if menuItem.subnav.length > 0
+                +icon('down',{w: 10, h: 5, cls: "menu__item-icon"})
+-
+    var nav = [
+        {
+            title: 'Главная', 
+            link: '/',
+            subnav: []
+        },
+        {
+            title: 'О нас', 
+            link: '', 
+            subnav: [ 
+                { title: 'О нас', link: 'about-us.html'}, 
+                { title: 'История', link: 'history.html'}, 
+                { title: 'Руководство и команда', link: 'team.html'}, 
+                { title: 'Партнёры', link: 'partners.html'}, 
+                { title: 'Контакты', link: 'contacts.html'}
+            ]
+        },
+        {
+            title: 'Наши проекты', 
+            link: '',
+            subnav: [ 
+                { title: 'Проекты', link: 'projects.html'}, 
+                { title: 'Мероприятия', link: 'events.html'}, 
+            ]
+        },
+        {
+            title: 'Пресс центр', 
+            link: '',
+            subnav: [
+                { title: 'Пресс центр', link: 'press-center.html'}, 
+                { title: 'Новости', link: 'news.html'}, 
+                { title: 'Сми о нас', link: 'smi-about.html'}, 
+                { title: 'Фотогалерея', link: 'foto-gallery.html'}, 
+                { title: 'Видеогалерея', link: 'video-gallery.html'}, 
+                { title: 'Архив', link: 'archive.html'}
+            ]
+        },
+        {
+            title: 'мероприятия', 
+            link: 'events.html',
+            subnav: []
+        },
+        {
+            title: 'вступить в ассоциацию', 
+            link: 'association.html',
+            subnav: []
+        },
+        {
+            title: 'законодательство', 
+            link: 'legislation.html',
+            subnav: []
+        }
+    ]

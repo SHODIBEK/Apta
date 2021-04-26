@@ -1,0 +1,37 @@
+.association {
+    padding: rem(150) 0;
+
+    @include mobile {
+        padding: rem(50)
+    }
+}
+
+.last-section {
+    padding-bottom: rem(150);
+
+    @include mobile {
+        padding-bottom: rem(50)
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        grid-gap: 30px;
+
+        @include mobile {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}

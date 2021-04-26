@@ -1,0 +1,81 @@
+-
+    var icons = [
+        {
+            icon: 'comment',
+            text: 'новые контакты'
+        },
+        {
+            icon: 'promotion',
+            text: 'рекламная площадка'
+        },
+        {
+            icon: 'promotion',
+            text: 'развитие туриндустрии'
+        },
+    ]
+-
+    var event = [
+        {
+            header: 'анонс мероприятия',
+            title: 'Недельный обучающий семинар проходит в Бухаре с 5 по 10 августа',
+            subtitle: 'Укрепление сельского и экологического туризма через бизнес ассоциации для устойчивого экономического развития в Центральной Азии',
+            image: 'event-1'
+        },
+        {
+            header: 'b2b',
+            title: 'Недельный обучающий семинар проходит в Бухаре с 5 по 10 августа',
+            subtitle: 'Укрепление сельского и экологического туризма через бизнес ассоциации для устойчивого экономического развития в Центральной Азии',
+            image: 'event-2'
+        },
+        {
+            header: 'roadshow',
+            title: 'Недельный обучающий семинар проходит в Бухаре с 5 по 10 августа',
+            subtitle: 'Укрепление сельского и экологического туризма через бизнес ассоциации для устойчивого экономического развития в Центральной Азии',
+            image: 'event-3'
+        },
+        {
+            header: 'семинар, тренинги',
+            title: 'Недельный обучающий семинар проходит в Бухаре с 5 по 10 августа',
+            subtitle: 'Укрепление сельского и экологического туризма через бизнес ассоциации для устойчивого экономического развития в Центральной Азии',
+            image: 'event-4'
+        },
+        {
+            header: 'вебинары',
+            title: 'Недельный обучающий семинар проходит в Бухаре с 5 по 10 августа',
+            subtitle: 'Укрепление сельского и экологического туризма через бизнес ассоциации для устойчивого экономического развития в Центральной Азии',
+            image: 'event-5'
+        },
+        {
+            header: 'выставки',
+            title: 'Недельный обучающий семинар проходит в Бухаре с 5 по 10 августа',
+            subtitle: 'Укрепление сельского и экологического туризма через бизнес ассоциации для устойчивого экономического развития в Центральной Азии',
+            image: 'event-6'
+        },
+    ]
+
+mixin event-icon()
+    ul.event__icons
+        each item in icons
+            li.event__icon
+                .event__circle
+                    +icon(`${item.icon}`,{cls: "event__svg"})
+                .event__text!=item.text
+
+mixin sliderEvent()
+    .swiper-container.index-event__slider
+        .swiper-wrapper
+            each item in event
+                .swiper-slide
+                    .index-event__slide
+                        .index-event__img
+                            img(src=`./images/events/${item.image}.jpg`, alt="")
+                        .index-event__block 
+                            .index-event__header
+                                | наши мероприятия
+                            .index-event__title!=item.title
+                            .index-event__subtitle!=item.subtitle
+                            +event-icon()
+        .swiper-controls
+            .swiper-button-prev
+            .swiper-pagination
+            .swiper-button-next

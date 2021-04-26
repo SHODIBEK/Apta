@@ -1,0 +1,26 @@
+// stylelint-disable scss/dollar-variable-empty-line-before
+$gutter-x: 30px;
+// COLORS
+
+$color-black: #000;
+$color-white: #fff;
+
+:root {
+    --primary-color: #052c58;
+    --secondary-color: #014eb4;
+    --grey-color: #8c95a6;
+    --lightGrey-color: #a1a8b6;
+    --aside-color: #a2a9b6;
+}
+
+// FONTS
+$main-font-size: 16px;
+$main-font: 'Gotham Pro', sans-serif;
+$secondary-font: 'HelveticaNeueCyr', sans-serif;
+// EASING TRANSITIONS
+$duration-normal: 0.4s;
+$easing-back-out: cubic-bezier(0.25, 0.74, 0.22, 1.1); // http://cubic-bezier.com/#.25,.74,.22,1.1
+$easing-back-in: cubic-bezier(0.47, -0.1, 0.5, -0.06); // http://cubic-bezier.com/#.47,-0.1,.5,-.06
+$easing-out: ease-out;
+$easing-in: ease-in;
+$duration-easing: linear;

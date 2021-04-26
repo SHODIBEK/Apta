@@ -1,0 +1,43 @@
+mixin header(data)
+    - data = data || {}
+    -
+        var lang = [
+            {
+                label: 'Русский',
+                iso: 'ru'
+            },
+            {
+                label: 'Français',
+                iso: 'fr'
+            }
+        ]
+    //BEGIN header
+    header.header#header(class!=headerClass)
+        .header__top
+            .container 
+                .header__top-wrapper.d-flex.align-center.justify-between
+                    .logo-block
+                        a(href="/").logo-block__link 
+                            img(src="logo.png", alt="logo").logo.logo-block__img
+                            span.logo-block__text
+                                | Ассоциация Частных Туристических  Организаций Узбекистана
+                    .header__top-info.header__info.d-flex.align-center
+                        .header__info-number.d-flex.align-center
+                            +icon('call',{w: 15, h: 15, cls: "header__info-icon"})
+                            .header__info-text
+                                | +998 71 <span>233 51 78</span>
+                        .header__lang.lang-switcher.js-toggle-active
+                            +languages()
+                    .mobile-menu__btn.js-mobile__btn 
+                        .burger.burger-arrow.burger-right
+                            .burger-lines
+        .header__bottom
+            .mobile-block 
+                +languages()
+                .mobile-menu__btn.js-mobile__btn 
+                    .burger.burger-arrow.burger-right
+                        .burger-lines
+            +menu(title)
+            include socials
+        .mobile-menu--bg
+    //END header

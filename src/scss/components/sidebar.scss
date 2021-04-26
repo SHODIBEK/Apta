@@ -1,0 +1,54 @@
+.sidebar {
+    position: relative;
+
+    @include mobile {
+        display: none;
+    }
+    &__inner {
+        position: sticky;
+        top: rem(50);
+        background-color: var(--primary-color);
+    }
+
+    &__items {
+        padding: rem(20) 0;
+    }
+
+    &__link {
+        position: relative;
+        display: block;
+        padding: rem(20) rem(60); 
+        font-family: $secondary-font;
+        font-weight: bold;
+        font-size: 16px;
+        color: var(--aside-color);
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all .3s linear;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--aside-color);
+            transition: all .3s linear;
+        }
+
+        @include hover {
+            color: #fff;
+            &::after {
+                background-color: #fff;
+            }
+        }
+    }
+
+    &--current {
+        color: #fff;
+        &::after {
+            background-color: #fff;
+        }
+    }
+}

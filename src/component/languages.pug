@@ -1,0 +1,24 @@
+mixin languages(data)
+    - data = data || {}
+    -
+        var lang = [
+            {
+                label: 'Русский',
+                iso: 'ru'
+            },
+            {
+                label: 'Узбекский',
+                iso: 'uz'
+            }
+        ]
+
+    
+    .lang-switcher__item.lang-switcher__item_empty
+        img.lang-switcher__icon(src=`images/languages/ru.svg` alt="")
+        span.lang-switcher__label Русский
+
+        ul.lang-switcher__dropdown
+            li.lang-switcher__item
+                a(href="#").lang-switcher__link
+                    img.lang-switcher__dropdown-icon(src=`images/languages/uz.svg` alt="")
+                    span.lang-switcher__label Узбекский

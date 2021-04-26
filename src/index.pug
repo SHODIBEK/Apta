@@ -1,0 +1,127 @@
+extends pug/base
+
+append vars
+	- title = 'Главная'
+	- meta.description = 'Описание страницы'
+	- link.icon = './favicon.ico'
+	- meta.formatDetection = 'telephone=no'
+	- meta.themeColor = ''
+	- defaultLink = 'javascript:void(0);'
+	- blockClass = 'index-event__items'
+
+block content
+	+header()
+	// Контент
+	section.main
+		.main__wrapper
+			section.slider
+				.slider__block
+					.swiper-container.slider__js
+						.swiper-wrapper
+							- for(var i = 0; i < 5; i++) {
+								.swiper-slide
+									.slider__item
+										picture
+											source(data-srcset="./images/slider-mob.jpg" media="(max-width: 576px)")
+											img(data-src="./images/slider-1.jpg" alt="slider").slider__img.swiper-lazy
+										.slider__captions
+											.slider__captions-text
+												| АССОЦИАЦИЯ ЧАСТНЫХ ТУРИСТИЧЕСКИХ ОРГАНИЗАЦИЙ узбекистана
+											.slider__captions-link
+												a(href="#").slider__captions-btn.slider__btn.btn-blue.btn
+													| присоединится
+							- }
+						.swiper-controls
+							.swiper-button-prev
+							.swiper-pagination
+							.swiper-button-next
+				.slider-card
+					.slider-card__images
+						img(src="./images/director.jpg", alt="")
+					.slider-card__block
+						.slider-card__title 
+							| Руководитель
+						.slider-card__name 
+							| Фамилия Имя
+						.slider-card__desc 
+							| Вероятностная логика,  конечно, транспонирует онтологический гедонизм. Вероятностная логика,  конечно,
+						.slider__btn 
+							a(href="#").btn.btn-white
+								| Подробнее
+			.banner
+				.container
+					.banner__block
+						img(src="./images/banner.jpg", alt="").banner__image
+			.white-wrapper
+				section.project
+					.container
+						.project__title.index-title 
+							| наши проекты
+						.project__slider.swiper-container
+							.swiper-wrapper
+								- for(var i = 0; i < 3; i++) {
+									.swiper-slide
+										a(href="#").project-block
+											img(src=`./images/projects/project-${i}.jpg`, alt="").project-block__image
+											.project-block__name
+												| Названия проекта может быть две
+											.project-block__count!=`0${i+1}`
+								- }
+							.swiper-button-prev
+							.swiper-pagination
+							.swiper-button-next
+				section.counters
+					.container
+						.counters__header.index-title 
+							| ассоциация в цыфрах
+						.counters__items.row
+							- var counters = [ { count: '1999', title: 'год основания ассоциации' }, {  count: '120', title: 'члены ассоциации' }, { count: '35000', title: 'колличество обученых' }, { count: '1500', title: 'проведенных мероприятия' } ]
+							each item in counters
+								.counters__item.col-md-6.col-lg-3
+									.counters__circle 
+										span(data-purecounter-start="0" 
+											data-purecounter-end!=item.count
+											class="purecounter")!=item.count
+									.counters__title!=item.title
+				section.news 
+					.container
+						.news__wrapper
+							.news__header.index-title 
+								| пресс центр
+							.news__items
+								.news__slider.swiper-container
+									.swiper-wrapper
+										- for(var i = 0; i < 3; i++) {
+											.swiper-slide
+												a(href="#").news__item
+													.news__picture 
+														img(src=`./images/news/news-${i}.jpg`, alt="").news__img 
+													.news__date
+														| 21 Январь, 2021
+													.news__title
+														| Заголовок новости может быть две строки или может быть больше в три строки  
+													.news__link.btn.btn-white
+														| Читать больше
+										- }
+									.swiper-pagination
+							a(href="news.html").link-title
+								| Все новости
+				section.index-event
+					.index-event__wrapper
+						+sliderEvent()
+				section.association
+					.container 
+						.association__header.index-title 
+							| Как вступить в ассоциацию
+						.association__block
+							+tourItem('row', 'col-md-6 col-lg-4', 3)
+				section.last-section
+					.container 
+						.last-section__header.index-title 
+							| члены ассоциации
+						.last-section__items
+							- for(var i = 0; i < 5; i++) {
+								.last-section__item
+									img(src=`./images/logos/logo-${i+1}.png`, alt="").last-section__img
+							- }
+	+footer()

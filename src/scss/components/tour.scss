@@ -1,0 +1,68 @@
+.tour {
+    &__items {
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        @include mobile {
+            margin-bottom: rem(50);
+        }
+    }
+
+    &__thumb {
+        position: relative;
+        width: 100%;
+        height: 0;
+        margin-bottom: rem(35);
+        padding-bottom: 100%;
+    }
+
+    &__img {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+    }
+
+    &__svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 70%;
+        height: 70%;
+        fill: var(--secondary-color);
+    }
+
+    &__title {
+        margin-bottom: rem(20);
+        font-weight: bold;
+        font-size: 21px;
+        color: var(--primary-color);
+        text-transform: uppercase;
+    }
+
+    &__subtitle {
+        margin-bottom: rem(30);
+        font-family: $secondary-font;
+        font-size: 18px;
+        color: var(--grey-color);
+    }
+}

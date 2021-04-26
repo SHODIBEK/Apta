@@ -1,0 +1,109 @@
+mixin footer(data)
+    - data = data || {}
+
+    -
+        var footerNav = [
+            {
+                title: "об АССОЦИАЦИи",
+                items: [
+                    {
+                        title: 'О нас',
+                        link: 'about-us.html'
+                    },
+                    {
+                        title: 'Наши проекты',
+                        link: 'projects.html'
+                    },
+                    {
+                        title: 'Члены ассоциации',
+                        link: 'memebers.html'
+                    },
+                    {
+                        title: 'Партнеры',
+                        link: 'partners.html'
+                    },
+                ]
+            },
+            {
+                title: "полезные сылки",
+                items: [
+                    {
+                        title: 'Новости',
+                        link: 'news.html'
+                    },
+                    {
+                        title: 'Мероприятия',
+                        link: 'events.html'
+                    },
+                    {
+                        title: 'Фотогалерея',
+                        link: 'foto-gallery.html'
+                    },
+                    {
+                        title: 'Контакты',
+                        link: 'contacts.html'
+                    },
+                ]
+            },
+        ]
+
+    footer.footer 
+        .container 
+            .footer__top.d-flex.align-center.justify-between
+                .footer__logo 
+                    img(src="logo.png", alt="logo")
+                .footer__lang.lang-switcher.js-toggle-active
+                    +languages()
+            .footer__center
+                .row
+                    .footer__left.d-flex.flex-column.justify-between.col-sm-12.col-lg-8
+                        nav.footer__nav.row
+                            each item in footerNav
+                                ul.footer__list.col-md-4.col-lg-4
+                                    li.footer__list-item.footer__list-title!=item.title
+                                    each items in item.items
+                                        li.footer__list-item
+                                            a(href=`${items.link}`).footer__list-link!=items.title
+                            ul.footer__list.col-md-4.col-lg-4.footer__contact
+                                li.footer__list-item.footer__list-title
+                                    | Контакты
+                                li.footer__list-item
+                                    a(href="tel:+998712335178").footer__contact-link
+                                        | +998 71 233 5178
+                                li.footer__list-item
+                                    a(href="mailto:office@apta.uz").footer__contact-link
+                                        | office@apta.uz
+                                li.footer__list-item
+                                    .footer__contact-address
+                                        | Узбекистан, 100047, г. Ташкент, ул. Айбека, дом 18
+                                li.footer__list-item
+                                    a(href="#").footer__contact-maps
+                                        | Показать на карте
+                        ul.footer__left-links
+                            li.footer__left-list
+                                a(href="#").footer__left-link
+                                    | Законодательные акты 
+                            li.footer__left-list
+                                a(href="#").footer__left-link
+                                    | Лицензирование
+                            li.footer__left-list
+                                a(href="#").footer__left-link
+                                    | Международные правовые документы
+                    .footer__right.col-sm-12.col-lg-4
+                        form(action="/").footer__form
+                            .footer__form-title 
+                                | связаться с нами
+                            .footer__form-group
+                                input(type="text" name="name" placeholder="Ваши имя").footer__form-input
+                            .footer__form-group
+                                input(type="email" name="email" placeholder="E-mail").footer__form-input
+                            .footer__form-group
+                                textarea(name="message" placeholder="Ваши сообщение").footer__form-input.footer__form-textarea
+                            .footer__form-group
+                                button(type="submit").footer__form-btn
+                                    | отправить
+            .footer__bottom 
+                span.footer__bottom-text
+                    | © Ассоциация Частных Туристических Организации Узбекистана 2021. Все права защищены
+                .footer__socials
+                    include socials

@@ -1,0 +1,49 @@
+.default-section {
+
+    p {
+        margin-bottom: rem(40);
+        font-family: $secondary-font;
+        font-size: 18px;
+        line-height: rem(30);
+        color: var(--primary-color);
+
+        @include mobile {
+            margin-bottom: rem(20);
+            margin-left: 0!important;
+            margin-right: 0!important;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    img{ 
+        max-width: 100%;
+        height: auto;
+        
+        @include mobile {
+            width: 100%;
+            margin-left: 0!important;
+            margin-right: 0!important;
+            margin-bottom: rem(20);
+        }
+    }
+}
+
+.iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    margin-bottom: rem(50);
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

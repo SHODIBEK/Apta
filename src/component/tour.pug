@@ -1,0 +1,50 @@
+mixin tourItem(rowClass, colClass, inc)
+    ul.tour__items(class!=rowClass)
+        each item, i in tourItem
+            if i < inc
+                li.tour__item(class!=colClass)
+                    .tour__thumb
+                        img(src=`./images/pic/${item.image}.jpg`, alt="").tour__img
+                        .tour__icon 
+                            +icon(`${item.icon}`,{cls: "tour__svg"})
+                    .tour__title!=item.title
+                    .tour__subtitle 
+                        | Вероятностная логика, конечно, транспонирует онтологический гедонизм. 
+                    .tour__btn 
+                        a(href="#").tour__link.btn.btn-white
+                            | Подробнее
+
+-
+    var tourItem = [
+        {
+            title: 'для турфирмы',
+            image: 'item-1',
+            icon: 'travel'
+        },
+        {
+            title: 'Для гостинец',
+            image: 'item-2',
+            icon: 'hotel'
+        },
+        {
+            title: 'Для гостевых домов',
+            image: 'item-3',
+            icon: 'house'
+        },
+        {
+            title: 'Для тур агентов',
+            image: 'item-4',
+            icon: 'suitcase'
+        },
+        {
+            title: 'Для хостелов',
+            image: 'item-5',
+            icon: 'bad'
+        },
+        
+        {
+            title: 'для транспортных компании',
+            image: 'item-6',
+            icon: 'bus'
+        },
+    ]

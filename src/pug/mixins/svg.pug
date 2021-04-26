@@ -1,0 +1,7 @@
+mixin icon(name, options)
+    - options = options || {};
+    svg.sprite-icon(class = options.cls || '' width = options.w || null height = options.h || null ) 
+        use(xlink:href=`/images/sprites.svg#${name}`)
+
+mixin img(className, name, ext, alt)
+    img(class=`${className}` srcset=`/images/${name}.${ext}, /assets/img/${name}@2x.${ext} 1.5x, /assets/img/${name}@2x.${ext} 2x`, src=`/assets/img/${name}.${ext}`, alt=`${alt}`)

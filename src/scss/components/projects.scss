@@ -1,0 +1,92 @@
+.project {
+    padding: rem(150) 0;
+
+    @include mobile {
+        padding: rem(50) 0;
+    }
+    &-block {
+        position: relative;
+        display: block;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(5,44,88,0.5858718487394958) 0, rgba(0,212,255,0) 100%);
+        }
+        
+        &__image {
+            display: block;
+            max-width: 100%;
+            height: 450px;
+            object-fit: cover;
+            object-position: center;
+        }
+    
+        &__name {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            font-family: $secondary-font;
+            font-weight: 600;
+            font-size: 24px;
+            color: #fff;
+        }
+    
+        &__count {
+            position: absolute;
+            top: -9px;
+            right: -3px;
+            font-weight: bold;
+            font-size: 60px;
+            color: #fff;
+            line-height: 1;
+            -webkit-text-stroke: 1px #fff;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &__slider {
+        padding-bottom: rem(50);
+        .swiper-button-prev, 
+        .swiper-button-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }            
+        .swiper-button-prev {
+            left: 40px;
+
+            @include mobile {
+                left: 0;
+            }
+        }
+        .swiper-button-next {
+            right: 40px;
+
+            @include mobile {
+                right: 0;
+            }
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            justify-content: center;
+
+            &-bullet {
+                border-color: var(--lightGrey-color);
+                &-active {
+                    background-color: var(--lightGrey-color);
+                }
+            }
+        }
+    }
+}

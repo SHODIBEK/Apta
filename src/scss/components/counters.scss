@@ -1,0 +1,41 @@
+.counters {
+    padding: rem(100) 0;
+    background-color: #bcc1cb;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include mobile {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: rem(20);
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+
+        span {
+            font-weight: 900;
+            font-size: rem(30);
+            color: #fff;
+        }
+    }
+
+    &__title {
+        margin-top: rem(30);
+        width: 65%;
+        font-weight: 900;
+        font-size: rem(15);
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--primary-color);
+    }
+}
