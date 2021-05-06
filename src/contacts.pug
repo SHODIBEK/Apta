@@ -1,0 +1,107 @@
+extends pug/base
+
+append vars
+    - title = 'О нас'
+    - titlePage = 'Контакты'
+    - body.classList = 'inner-page'
+    - socialName = true;
+    -
+        var sidebar = [
+            { title: 'О нас', link: 'about-us.html'}, 
+            { title: 'История', link: 'history.html'}, 
+            { title: 'Руководство и команда', link: 'team.html'}, 
+            { title: 'Партнёры', link: 'partners.html'}, 
+            { title: 'Контакты', link: 'contacts.html'},
+            { title: 'Члены ассоциации', link: 'assosation-members.html'}
+        ]
+    -
+        var socials = [
+            {
+                name: 'Facebook',
+                icon: 'Facebook'
+            },
+            {
+                name: 'Twitter',
+                icon: 'Twitter'
+            },
+            {
+                name: 'YouTube',
+                icon: 'YouTube'
+            },
+            {
+                name: 'LinkedIn',
+                icon: 'in'
+            },
+            {
+                name: 'Telegram',
+                icon: 'Telegram'
+            },
+        ]
+
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="600")
+                        .contact
+                            .contact__info 
+                                ul.contact__lists 
+                                    li.contact__list(data-aos="fade-up" data-aos-delay="200")
+                                        .contact__icon 
+                                            +icon('call',{w: 20, h: 20, cls: "contact__svg"})
+                                        .contact__block 
+                                            .contact__title 
+                                                | Телефон
+                                            .contact__subtitle 
+                                                a(href="tel:+998712335178").contact__link
+                                                    | +998 71 233 5178
+                                    li.contact__list(data-aos="fade-up" data-aos-delay="300")
+                                        .contact__icon 
+                                            +icon('e-mail',{w: 20, h: 15, cls: "contact__svg"})
+                                        .contact__block 
+                                            .contact__title 
+                                                | E-mail
+                                            .contact__subtitle 
+                                                a(href="mailto:office@apta.uz").contact__link
+                                                    | office@apta.uz
+                                    li.contact__list(data-aos="fade-up" data-aos-delay="400")
+                                        .contact__icon 
+                                            +icon('address',{w: 15, h: 20, cls: "contact__svg"})
+                                        .contact__block 
+                                            .contact__subtitle 
+                                                | Узбекистан, 100047,  г. Ташкент, ул. Айбека, дом 18
+                                .social(data-aos="fade-up" data-aos-delay="400")
+                                    ul.social__list
+                                        each item, i in socials
+                                            li.social__item(data-aos="fade-up" data-aos-delay=`${i+2}00`)
+                                                a(href="#").social__link.social--hover
+                                                    +icon(`${item.icon}`,{cls: `social__icon`})
+                                                    span.social__name!=item.name
+                .contact__bottom(data-aos="fade-up" data-aos-delay="400")
+                    form(action="/" method="POST").contact__form
+                        .contact__form-title 
+                            | связаться с нами
+                        .contact__form-groups
+                            .contact__form-group.form-group(data-aos="fade-up" data-aos-delay="200")
+                                input(type="text" name="name" id="name" placeholder="Ваши имя" required)
+                                span.error Имя обязательное
+                            .contact__form-group.form-group(data-aos="fade-up" data-aos-delay="300")
+                                input(type="email" name="email" id="email" placeholder="E-mail" required)
+                                span.error E-mail обязательное
+                            .contact__form-group.form-group(data-aos="fade-up" data-aos-delay="400")
+                                input(type="text" name="organization" placeholder="Организация")
+                            .contact__form-group.form-group(data-aos="fade-up" data-aos-delay="500")
+                                textarea(name="message" id="message" placeholder="Ваши сообщение" required)
+                                span.error E-mail обязательное
+                            .contact__form-btn(data-aos="fade-up" data-aos-delay="600")
+                                button(type="submit").btn.btn-blue
+                                    | отправить
+                    .contact__map#map(data-aos="fade-up" data-aos-delay="400")
+    +footer()

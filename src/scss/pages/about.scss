@@ -1,5 +1,26 @@
 .default-section {
-
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin-top: 0;
+        margin-bottom: rem(30);
+        font-family: $main-font;
+        font-weight: 900;
+        color: var(--primary-color);
+    }
+    h1 {
+        @include css-lock(25,50,1024,1440);
+    }
+    h2 {
+        @include css-lock(20,40,1024,1440);
+    }
+    h3 {
+        @include css-lock(18,30,1024,1440);
+    }
+    h4 {
+        @include css-lock(16,24,1024,1440);
+    }
     p {
         margin-bottom: rem(40);
         font-family: $secondary-font;
@@ -26,7 +47,15 @@
             width: 100%;
             margin-left: 0!important;
             margin-right: 0!important;
-            margin-bottom: rem(20);
+            margin-bottom: rem(20)!important;
+        }
+    }
+
+    a {
+        color: var(--secondary-color);
+
+        @include hover {
+            color: var(--primary-color);
         }
     }
 }

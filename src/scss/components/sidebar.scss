@@ -1,6 +1,6 @@
 .sidebar {
     position: relative;
-
+    z-index: 98;
     @include mobile {
         display: none;
     }

@@ -1,60 +1,75 @@
 .news {
     padding: rem(150) 0;
-
+    position: relative;
     @include mobile {
         padding: rem(100) 0;
     }
 
+    .link-title {
+        display: none;
+    }
+
     &__header {
         position: relative;
+
     }
 
     &__wrapper {
         position:relative;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-gap: 30px;
+
+        @media screen and (max-width: 1140px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__slider {
         padding-bottom: rem(50);
     }
 
-    &__items {
-
-    }
-
     &__item {
+        margin-bottom: rem(30);
+        padding-bottom: rem(30);
         font-family: $secondary-font;
         text-decoration: none;
+        border-bottom: 1px solid #e5e5e5;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include mobile {
+            padding-bottom: 0;
+            border: none;
+        }
     }
 
     &__picture {
-        position: relative;
-        width: 100%;
-        height: 0;
         margin-bottom: rem(30);
         padding-bottom: 86%;
     }
 
-    &__img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+    &__date {
+        display: flex;
+        align-items: center;
     }
 
-    &__date {
-        margin-bottom: rem(30);
+    &__view {
+        margin-left: rem(20);
+        font-family: $secondary-font;
         font-size: 16px;
-        color: var(--secondary-color);
+        color: var(--grey-color);
+    }
 
-        @include mobile {
-            margin-bottom: rem(15);
-        }
+    &__icon {
+        margin-right: rem(10);
+        fill: var(--grey-color);
     }
 
     &__title {
+        margin-top: 0;
         margin-bottom: rem(30);
         display: block;
         display: -webkit-box;
@@ -85,6 +100,113 @@
                 border-color: var(--primary-color);
                 background-color: var(--primary-color);
             }
+        }
+    }
+
+    &__link {
+        display: grid;
+        grid-gap: 30px;
+        text-decoration: none;
+
+        @include hover {
+            .news__title {
+                color: var(--secondary-color);
+            }
+        }
+    }
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        grid-gap: 30px;
+
+        @media screen and (max-width: 1140px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__thumb {
+        padding-bottom: rem(230);
+        @extend %bgimage;
+
+        @media screen and (max-width: 1140px) {
+            padding-bottom: 70%;
+        }
+    }
+
+    &-section {
+        .news__item {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+    }
+
+    &__blocks {
+        .news__item {
+            border-bottom: none;
+        }
+    }
+}
+
+.smi {
+    &__item {
+        margin-bottom: rem(30);
+        padding-bottom: rem(30);
+        border-bottom: 1px solid var(--grey-color);
+
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        @include mobile {
+            border: none;
+        }
+    }
+
+    &__link {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        grid-gap: 30px;
+        text-decoration: none;
+
+        @media screen and (max-width: 1140px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__thumb {
+        padding-bottom: 75%;
+        @extend %bgimage;
+    }
+
+    &__block {
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+    &__view {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    &-info {
+        margin-bottom: rem(20);
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: var(--grey-color);
+        text-transform: uppercase;
+
+        @include smobile {
+            font-size: 10px;
+        }
+
+        & > * {
+            margin-right: rem(50);
         }
     }
 }

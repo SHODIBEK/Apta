@@ -1,0 +1,37 @@
+extends pug/base
+
+append vars
+    - title = 'О нас'
+    - titlePage = 'Партнёры'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'О нас', link: 'about-us.html'}, 
+            { title: 'История', link: 'history.html'}, 
+            { title: 'Руководство и команда', link: 'team.html'}, 
+            { title: 'Партнёры', link: 'partners.html'}, 
+            { title: 'Контакты', link: 'contacts.html'},
+            { title: 'Члены ассоциации', link: 'assosation-members.html'}
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="600")
+                        .partners
+                            ul.partners__items.row
+                                - for(var i = 0; i < 10; i++) {
+                                    li.partners__item.col-sm-6.col-md-4.col-lg-4(data-aos="fade-up" data-aos-delay=`${i+2}00`)
+                                        a(href="#" title="").partners__link
+                                            img(src=`./images/partners/partner-${i+1}.png`, alt="").partners__img
+                                            span.partners__name
+                                                | Название партнера две строки 
+                                - }
+    +footer()

@@ -1,0 +1,162 @@
+.director {
+    padding-bottom: rem(100);
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-column-gap: rem(70);
+
+
+    @media (max-width: 1300px) {
+        grid-column-gap: 2.375rem;
+	}
+
+    @include mobile {
+        grid-template-columns: 300px 1fr;
+    }
+
+    @include smobile {
+        padding-bottom: rem(50);
+        grid-template-columns: 1fr;
+    }
+
+    &__thumb {
+        position:relative;
+        padding-bottom: rem(570);
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+
+        @media (max-width: 1200px) {
+            padding-bottom: rem(450);
+        }
+
+        @include smobile {
+            padding-bottom: rem(250);
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__img {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        margin-bottom: rem(27);
+        font-family: $secondary-font;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+    }
+
+    &__name {
+        position: relative;
+        margin-bottom: rem(50);
+        padding-bottom: rem(38);
+        font-weight: 900;
+        @include css-lock(25,30,768,1440);
+        color: var(--primary-color);
+        text-transform: uppercase;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 94px;
+            height: 8px;
+            background-color: var(--secondary-color);
+        }
+    }
+
+    &__desc {
+        font-family: $secondary-font;
+        font-size: 18px;
+        line-height: 30px;
+        color: var(--grey-color);
+    }
+
+    &__signature {
+        margin-top: rem(40);
+        text-align: right;
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.team-section {
+    position: relative;
+    padding-top: rem(100);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -5rem;
+        right: 10rem;
+        width: calc(100% + 10rem);
+        height: calc(100% + 5rem);
+        background: #e8e9ed;
+        z-index: 0;
+
+        @media (max-width: 1300px) {
+            left: -2rem;
+            width: calc(100% + 4rem);
+            height: calc(100% + 2rem);
+        }
+    }
+
+    @include smobile {
+        padding-top: rem(50);
+    }
+
+    &__title {
+        position: relative;
+        margin-bottom: rem(63);
+        font-weight: 900;
+        @include css-lock(25,40,768,1440);
+        color: var(--primary-color);
+        text-transform: uppercase;
+
+        @include smobile {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__items {
+
+    }
+
+    &__item {
+        margin-bottom: rem(30);
+        font-family: $secondary-font;
+    }
+
+    &__thumb {
+        margin-bottom: rem(33);
+        padding-bottom: 70%;
+        @extend %bgimage;
+    }
+
+    &__name {
+        margin-bottom: rem(15);
+        font-weight: bold;
+        font-size: 24px;
+        color: var(--primary-color);
+    }
+
+    &__position {
+        font-size: 18px;
+        color: var(--grey-color);
+    }
+}
+

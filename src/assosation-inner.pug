@@ -1,0 +1,195 @@
+extends pug/base
+
+append vars
+    - title = 'вступить в ассоциацию'
+    - titlePage = 'гостиницы'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'Тур операторы', link: 'assosation-inner.html'}, 
+            { title: 'тур агенты', link: 'assosation-inner.html'}, 
+            { title: 'гостиницы', link: 'assosation-inner.html'}, 
+            { title: 'гостевые дома', link: 'assosation-inner.html'}, 
+            { title: 'Хостелы', link: 'assosation-inner.html'},
+            { title: 'транспортные компании', link: 'assosation-inner.html'}
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="500")
+                        .tour-inner
+                            .default-section 
+                                .tour__thumb.ratio-container
+                                    img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                                        data-sizes="auto"
+                                        data-src=`./images/pic/item-2.jpg`
+                                        data-srcset=`./images/pic/item-2.jpg 300w,
+                                        ./images/pic/item-2.jpg 600w,
+                                        ./images/pic/item-2.jpg 900w`).lazyload.blur-up
+                                    .tour__icon 
+                                        +icon(`hotel`,{cls: "tour__svg"})
+                                p(style="margin-left:100px;margin-right: 190px")
+                                    | Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров, развить в Узбекистане свой бизнес, а правительство в свою очередь готово поддержать все ваши инициативы».
+                                p(style="margin-left:100px;margin-right: 190px")
+                                    | В церемонии открытия мероприятия также приняли участие в.р.и.о. председателя Государственного комитета Республики Узбекистан по развитию туризма Абдулазиз Аккулов, Председатель Ассоциации частных туристических организаций Узбекистана (АЧТО) Гулчехра Исраилова, представители международных и отечественных организаций в сфере туризма, а также средств массовой информации.
+                .tour-form 
+                    .tour-form__title 
+                        | Заполните форму
+                    .tour-form__group 
+                        form(action="/" method="POST")
+                            .row-group
+                                .row
+                                    .col-md-12
+                                        .form-group
+                                            label
+                                                | Наименование юридического лица с указанием организационной правовой формы
+                                            input(type="text" name="org" placeholder="Введите наименование организации")
+                                .row
+                                    .col-md-12
+                                        .form-group
+                                            label
+                                                | Ф.И.О. Руководителя
+                                            input(type="text" name="dir" placeholder="Например Иван Иванович")
+                            .tour-form__subtitle
+                                | Юридический адрес
+                            .row-group
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Область:
+                                            input(type="text" name="org" placeholder="Введите свой область")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Район:
+                                            input(type="text" name="org" placeholder="Введите район проживания")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Улица:
+                                            input(type="text" name="org" placeholder="Введите названия улицы")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Дом:
+                                            input(type="text" name="org" placeholder="Введите номер дома")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Квартира:
+                                            input(type="text" name="org" placeholder="Введите номер дома")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Почтовый индекс:
+                                            input(type="text" name="org" placeholder="Введите цыфры индекса")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Рабочий телефон:
+                                            input(type="tel" name="org" placeholder="+998 (__) ___-__-__").js-phone
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Дополнительный телефон:
+                                            input(type="tel" name="org" placeholder="+998 (__) ___-__-__").js-phone
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Факс:
+                                            input(type="text" name="org" placeholder="Введите номер факса")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | E-mail:
+                                            input(type="email" name="org" placeholder="Введите электронный адрес почты")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Веб сайт компании:
+                                            input(type="text" name="org" placeholder="Введите ссылку на сайт")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Skype:
+                                            input(type="text" name="org" placeholder="Введите логин skype")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Facebook компании:
+                                            input(type="text" name="org" placeholder="Введите ссылку facebook")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Twitter компании:
+                                            input(type="text" name="org" placeholder="Введите ссылку twitter")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Instagram компании:
+                                            input(type="text" name="org" placeholder="Введите ссылку instagram")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Другие соц сети:
+                                            input(type="text" name="org" placeholder="Введите ссылку")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Дата регистрации организации:
+                                            .form-input
+                                                input(type="text" name="date" placeholder="Введите дату" data-toggle="datepicker" readonly)
+                                                +icon('calendar',{w: 22, h: 20, cls: "form-input__icon"})
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Свидетельства регистрации:
+                                            .file-input
+                                                input(type="file" name="upl" id="file")
+                                                label(for="file").file-name Прикрепите файл
+                                                span.file-clear
+                                                +icon('folder',{w: 22, h: 20, cls: "form-input__icon"})
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Инн:
+                                            input(type="text" name="org" placeholder="Введите номер инн")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Okonx:
+                                            input(type="text" name="org" placeholder="Напишите okonx")
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Номерной фонд:
+                                            input(type="text" name="fond" placeholder="Введите номер фонда")
+                                    .col-md-6
+                                        .form-group
+                                            label
+                                                | Колличество звезд:
+                                            input(type="text" name="star" placeholder="Напишите сколько звезд")
+                                .row
+                                    .col-md-12
+                                        button(type="submit").btn.btn-lightblue
+                                            | Отправить
+    +footer()

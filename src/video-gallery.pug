@@ -1,0 +1,30 @@
+extends pug/base
+
+append vars
+    - title = 'Пресс центр'
+    - titlePage = 'Видеогалерея'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+                { title: 'Новости', link: 'news.html'}, 
+                { title: 'Сми о нас', link: 'smi-about.html'}, 
+                { title: 'Фотогалерея', link: 'foto-gallery.html'}, 
+                { title: 'Видеогалерея', link: 'video-gallery.html'}, 
+                { title: 'Архив', link: 'archive.html'}
+        ]
+block content
+    +header()
+    // Контент
+    section.main
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content
+                        .gallery
+                            +videoGallery(2)
+                            +filter()
+    +footer()

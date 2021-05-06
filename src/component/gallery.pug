@@ -1,0 +1,69 @@
+-
+    var gallery = [
+        {
+            title: 'Apta networking club',
+            count: '25'
+        },
+        {
+            title: 'B2B между Узбекскими и Российскими тур компаниями сотруждничество',
+            count: '18'
+        },
+        {
+            title: 'Презентация я люблю Сингапур',
+            count: '33'
+        },
+        
+        {
+            title: 'Презентация крупшего туроператора Sayamat',
+            count: '67'
+        },
+    ]
+
+mixin gallery(data)
+    - data = data || {}
+    
+    ul.gallery__items
+        each item,i in gallery
+            if i < data
+                li.gallery__item 
+                    .gallery__images 
+                        .gallery__image.ratio-container
+                            img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                            data-sizes="auto"
+                            data-src=`./images/gallery/${i+1}.jpg`).lazyload.blur-up
+                        .gallery__image.ratio-container
+                            img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                            data-sizes="auto"
+                            data-src=`./images/gallery/${i+2}.jpg`).lazyload.blur-up
+                    .gallery__title!=item.title
+                    .gallery__bottom
+                        a(href="gallery-inner.html").gallery__btn.btn.btn-white
+                            | Посмотреть альбом
+                        .gallery__count
+                            +icon('camera',{w: 20, h: 16, cls: "gallery__icon"})
+                            span!=item.count
+                                | &nbsp;Фотографии
+
+mixin galleryInner(data)
+    - data = data || {}
+    .gallery__wrapper
+        .gallery-slider.swiper-container(data-aos="fade-up" data-aos-delay="200")
+            .gallery__count.gallery__count--border
+                +icon('camera',{w: 20, h: 16, cls: "gallery__icon"})
+                span
+                    | 8&nbsp;Фотографии
+            .swiper-wrapper
+                - for (var i = 0; i < 8; i++) {
+                    .swiper-slide
+                        a(href=`./images/gallery/${i+1}.jpg` data-fancybox).gallery__link
+                            img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                            data-src=`./images/gallery/${i+1}.jpg`).swiper-lazy
+                            .swiper-lazy-preloader
+                -  }
+            .swiper-button-prev
+            .swiper-button-next
+        .swiper-container.gallery-thumbs(data-aos="fade-up" data-aos-delay="300")
+            .swiper-wrapper
+                - for (var i = 0; i < 8; i++) {
+                    .swiper-slide.gallery-thumbs__slide(style=`background-image:url(./images/gallery/${i+1}.jpg)`)
+                -  }

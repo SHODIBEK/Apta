@@ -1,0 +1,48 @@
+extends pug/base
+
+append vars
+    - title = 'Наши проекты'
+    - titlePage = 'CBT UZBEKISTAN'
+    - body.classList = 'inner-page event-inner project-inner'
+    -
+        var sidebar = [
+            { title: 'CBT Uzbekistan', link: 'projects-inner.html'}, 
+            { title: 'Tashkent travel mart', link: 'projects-inner.html'},
+            { title: 'APTA Networking Club', link: 'projects-inner.html'},
+            { title: 'Future Growth Initiative', link: 'projects-inner.html'},
+            { title: 'Model for Sustainable Tourism', link: 'projects-inner.html'},
+            { title: 'Strengthening rural and ecotourism through business', link: 'projects-inner.html'},
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content.overflow-x
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="500")
+                        .events-section
+                            .default-section 
+                                img(src="./images/events/event-1.jpg", alt="" style="margin-bottom: 50px;")
+                                p(style="margin-left:100px;margin-right: 190px")
+                                    | Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров, развить в Узбекистане свой бизнес, а правительство в свою очередь готово поддержать все ваши инициативы».
+                                p(style="margin-left:100px;margin-right: 190px")
+                                    | В церемонии открытия мероприятия также приняли участие в.р.и.о. председателя Государственного комитета Республики Узбекистан по развитию туризма Абдулазиз Аккулов, Председатель Ассоциации частных туристических организаций Узбекистана (АЧТО) Гулчехра Исраилова, представители международных и отечественных организаций в сфере туризма, а также средств массовой информации.
+                            .events-section__inner 
+                                .index-title 
+                                    | преимущество мероприятия
+                                +event-icon()
+                            .default-section 
+                                p(style="margin-left:100px;margin-right: 190px")
+                                    | В церемонии открытия мероприятия также приняли участие в.р.и.о. председателя Государственного комитета Республики Узбекистан по развитию туризма Абдулазиз Аккулов, Председатель Ассоциации частных туристических организаций Узбекистана (АЧТО) Гулчехра Исраилова, представители международных и отечественных организаций в сфере туризма, а также средств массовой информации.
+                            .back-btn
+                                a(href="#").btn.btn-blue
+                                    | Перейти на сайт 
+                                a(href="#").btn.btn-white
+                                    +icon('back',{w: 6, h: 10,})
+                                    | Вернуться назад к мероприятием
+    +footer()

@@ -23,6 +23,13 @@
             margin: auto;
             background: url('../images/icons/down.svg') no-repeat center;
         }
+
+        @include hover {
+            .lang-switcher__dropdown {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
     }
 
     &__icon {
@@ -82,6 +89,14 @@
 
         .lang-switcher__label {
             color: var(--grey-color);
+        }
+    }
+
+    &--open {
+
+        .lang-switcher__dropdown {
+            opacity: 1;
+            visibility: visible;
         }
     }
 }

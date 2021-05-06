@@ -1,0 +1,13 @@
+mixin filter(data)
+    - data = data || {}
+    -
+        var dates = ['2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011']
+    - defaultLink = 'javascript:void(0);'
+    .filter
+        .filter__item--mobile 
+            a(href!=defaultLink data-filter="Выбрать год").filter__link.js-filter--trigger
+                | Выбрать год
+        ul.filter__items
+            each item,i in dates
+                li.filter__item(class!=(item === '2020') ? 'filter__item--active' : '' data-aos="fade-up" data-aos-delay=`${i+1}00`)
+                    a(href="#" title!=item).filter__link!=item

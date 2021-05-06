@@ -3,15 +3,20 @@ mixin tourItem(rowClass, colClass, inc)
         each item, i in tourItem
             if i < inc
                 li.tour__item(class!=colClass)
-                    .tour__thumb
-                        img(src=`./images/pic/${item.image}.jpg`, alt="").tour__img
+                    .tour__thumb.ratio-container
+                        img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                            data-sizes="auto"
+                            data-src=`./images/pic/${item.image}.jpg`
+                            data-srcset=`./images/pic/${item.image}.jpg 300w,
+                            ./images/pic/${item.image}.jpg 600w,
+                            ./images/pic/${item.image}.jpg 900w`).lazyload.blur-up
                         .tour__icon 
                             +icon(`${item.icon}`,{cls: "tour__svg"})
                     .tour__title!=item.title
                     .tour__subtitle 
                         | Вероятностная логика, конечно, транспонирует онтологический гедонизм. 
                     .tour__btn 
-                        a(href="#").tour__link.btn.btn-white
+                        a(href="assosation-inner.html").tour__link.btn.btn-white
                             | Подробнее
 
 -

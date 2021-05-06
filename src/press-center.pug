@@ -1,0 +1,99 @@
+extends pug/base
+
+append vars
+    - title = 'Пресс центр'
+    - titlePage = 'Пресс центр'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'Новости', link: 'news.html'}, 
+            { title: 'Сми о нас', link: 'smi-about.html'}, 
+            { title: 'Фотогалерея', link: 'foto-gallery.html'}, 
+            { title: 'Видеогалерея', link: 'video-gallery.html'}, 
+            { title: 'Архив', link: 'archive.html'}
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="500")
+                        .main__lists
+                            .main__block
+                                .main-title
+                                    | Новости
+                                    a(href="#").main-link 
+                                        | все новости
+                                .news-section
+                                    ul.news__items
+                                        li.news__item
+                                            a(href="news-inner.html").news__link
+                                                .news__wrap
+                                                    .news__thumb.ratio-container
+                                                        img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                                                        data-sizes="auto"
+                                                        data-src=`./images/news/news-3.jpg`
+                                                        data-srcset=`./images/news/news-3.jpg 300w,
+                                                        ./images/news/news-3.jpg 600w,
+                                                        ./images/news/news-3.jpg 900w`
+                                                        ).news__img.lazyload.blur-up
+                                                    .news__block 
+                                                        date.date
+                                                            | 7 октября, 2020
+                                                        h3.h3
+                                                            | CBT-туризм Самарканда, обладающий высоким потенциалом, ждет только позитивных импульсов
+                                                        p.p
+                                                            | Сбалансированное территориальное развитие Республики Узбекистан предполагает ориентацию на обеспечение условийпозволяющих каждому региону
+                                                .view
+                                                    +icon('eye',{w: 16, h: 10, cls: "view__icon"})
+                                                    span 156
+                            .main__block
+                                .main-title
+                                    | сми о нас
+                                    a(href="#").main-link 
+                                        | посмотреть все
+                                .smi-section
+                                    +smi(1)
+                            .main__block
+                                .main-title
+                                    | фотогалерея
+                                    a(href="#").main-link 
+                                        | посмотреть все
+                                .gallery-section
+                                    ul.gallery__items
+                                        li.gallery__item 
+                                            .gallery__images 
+                                                .gallery__image.ratio-container
+                                                    img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                                                    data-sizes="auto"
+                                                    data-src=`./images/gallery/1.jpg`).lazyload.blur-up
+                                                .gallery__image.ratio-container
+                                                    img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                                                    data-sizes="auto"
+                                                    data-src=`./images/gallery/2.jpg`).lazyload.blur-up
+                                            .gallery__bottom
+                                                .gallery__title
+                                                    | Apta networking club
+                                                a(href="#").gallery__btn.btn.btn-white
+                                                    | Посмотреть альбом
+                            .main__block
+                                .main-title
+                                    | видео галерея
+                                    a(href="#").main-link 
+                                        | посмотреть все
+                                .video-gallery
+                                    +videoGallery(1)
+                            .main__block
+                                .main-title
+                                    | архив
+                                    a(href="#").main-link 
+                                        | посмотреть все
+                                .archive
+                                    +archive(2)
+    +footer()

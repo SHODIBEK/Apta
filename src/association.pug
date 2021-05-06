@@ -1,0 +1,30 @@
+extends pug/base
+
+append vars
+    - title = 'вступить в ассоциацию'
+    - titlePage = 'вступить в ассоциацию'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'Тур операторы', link: 'assosation-inner.html'}, 
+            { title: 'тур агенты', link: 'assosation-inner.html'}, 
+            { title: 'гостиницы', link: 'assosation-inner.html'}, 
+            { title: 'гостевые дома', link: 'assosation-inner.html'}, 
+            { title: 'Хостелы', link: 'assosation-inner.html'},
+            { title: 'транспортные компании', link: 'assosation-inner.html'}
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="600")
+                        .tour
+                            +tourItem('row', 'col-md-6 col-lg-6', 6)
+    +footer()

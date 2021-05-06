@@ -47,24 +47,24 @@ mixin footer(data)
             },
         ]
 
-    footer.footer 
+    footer.footer(data-aos="fade-up" data-aos-delay="200")
         .container 
-            .footer__top.d-flex.align-center.justify-between
+            .footer__top.d-flex.align-center.justify-between(data-aos="fade-up" data-aos-delay="400")
                 .footer__logo 
                     img(src="logo.png", alt="logo")
                 .footer__lang.lang-switcher.js-toggle-active
                     +languages()
-            .footer__center
+            .footer__center(data-aos="fade-up" data-aos-delay="400")
                 .row
                     .footer__left.d-flex.flex-column.justify-between.col-sm-12.col-lg-8
                         nav.footer__nav.row
                             each item in footerNav
-                                ul.footer__list.col-md-4.col-lg-4
+                                ul.footer__list.col-md-4.col-lg-4(data-aos="fade-up" data-aos-delay="500")
                                     li.footer__list-item.footer__list-title!=item.title
                                     each items in item.items
-                                        li.footer__list-item
+                                        li.footer__list-item(data-aos="fade-up" data-aos-delay="500")
                                             a(href=`${items.link}`).footer__list-link!=items.title
-                            ul.footer__list.col-md-4.col-lg-4.footer__contact
+                            ul.footer__list.col-md-4.col-lg-4.footer__contact(data-aos="fade-up" data-aos-delay="600")
                                 li.footer__list-item.footer__list-title
                                     | Контакты
                                 li.footer__list-item
@@ -102,8 +102,8 @@ mixin footer(data)
                             .footer__form-group
                                 button(type="submit").footer__form-btn
                                     | отправить
-            .footer__bottom 
+            .footer__bottom(data-aos="fade-up")
                 span.footer__bottom-text
                     | © Ассоциация Частных Туристических Организации Узбекистана 2021. Все права защищены
                 .footer__socials
-                    include socials
+                    +socials()

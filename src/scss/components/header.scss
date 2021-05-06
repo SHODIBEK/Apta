@@ -1,5 +1,8 @@
 .header {
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     @include mobile {
         box-shadow: 0 -30px 60px 0px #252525;
     }
@@ -10,6 +13,10 @@
         @include mobile {
             padding: 10px 0;
         }
+    }
+
+    &--scroll {
+        transform: translateY(var(--headerTop))!important;
     }
 
     &__bottom {
@@ -242,13 +249,10 @@
         &:first-child {
             .submenu__link {
                 padding-top: 20px;
-                @include mobile {
-                    padding-top: 10px;
-                }
                 &::after {
                     top: 26px;
                     @include mobile {
-                        top: 16px;
+                        // top: 16px;
                     }
                 }
             }

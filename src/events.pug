@@ -1,0 +1,30 @@
+extends pug/base
+
+append vars
+    - title = 'Наши проекты'
+    - titlePage = 'Наши Мероприятия'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'Анонс мероприятия', link: 'events-inner.html'}, 
+            { title: 'В2В', link: 'events-inner.html'},
+            { title: 'RoadShow', link: 'events-inner.html'},
+            { title: 'семинар, тренинги', link: 'events-inner.html'},
+            { title: 'Вебинары', link: 'events-inner.html'},
+            { title: 'выставки', link: 'events-inner.html'},
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="400")
+                        .events-section
+                            +event()
+    +footer()

@@ -1,0 +1,59 @@
+extends pug/base
+
+append vars
+    - title = 'О нас'
+    - titlePage = 'Руководство и команда'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'О нас', link: 'about-us.html'}, 
+            { title: 'История', link: 'history.html'}, 
+            { title: 'Руководство и команда', link: 'team.html'}, 
+            { title: 'Партнёры', link: 'partners.html'}, 
+            { title: 'Контакты', link: 'contacts.html'},
+            { title: 'Члены ассоциации', link: 'assosation-members.html'}
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content.main-content--grid.team-page
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="200")
+                        .director
+                            .director__thumb 
+                                img(src="./images/director.jpg", alt="").director__img
+                            .director__block 
+                                .director__title
+                                    | руководитель
+                                .director__name 
+                                    | гульчехра баходировна
+                                .director__desc 
+                                    | Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров, развить в Узбекистане свой бизнес.
+                                .director__signature
+                                    img(src="./images/about/signature.png", alt="").director__signature-img
+                    .team-section(data-aos="fade-up" data-aos-delay="200")
+                        .team-section__title 
+                            | команда
+                        ul.team-section__items.row
+                            - for(var i = 0; i < 6; i++) {
+                                li.team-section__item.col-sm-12.col-md-6.col-lg-6(data-aos="fade-up" data-aos-delay=`${i+5}00`)
+                                    .team-section__thumb.ratio-container
+                                        img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", 
+                                        data-sizes="auto"
+                                        data-src=`./images/about/team-${i+1}.jpg`
+                                        data-srcset=`./images/about/team-${i+1}.jpg 300w,
+                                        ./images/about/team-${i+1}.jpg 600w,
+                                        ./images/about/team-${i+1}.jpg 900w`
+                                        alt="").team-section__img.lazyload.blur-up
+                                    .team-section__name
+                                        | Имя Фамилия 
+                                    .team-section__position
+                                        | Должность
+                            - }
+    +footer()

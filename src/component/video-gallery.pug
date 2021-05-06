@@ -1,0 +1,23 @@
+mixin videoGallery(data)
+    - data = data || {}
+    -
+        var gallery = [
+            {
+                title: 'Преимушество открытия готевого дома'
+            },
+            {
+                title: 'Apta lastver'
+            }
+        ]
+    
+    ul.video-gallery__items 
+        each item,i in gallery
+            if i < data
+                li.video-gallery__item(data-aos="fade-up" data-aos-delay=`${i+1}00`)
+                    .video-gallery__video.ratio-container
+                        video(
+                        class="js-player"
+                        preload="auto"
+                        data-poster=`./images/video/${i+1}.jpg`)
+                            source(src="./images/video/oceans.mp4" type="video/mp4")
+                    .video-gallery__title.h3!=item.title

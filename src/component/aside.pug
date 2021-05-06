@@ -1,9 +1,9 @@
 mixin aside(data)
     - data = data || {}
 
-    aside.sidebar 
+    aside.sidebar(data-aos="fade-up" data-aos-delay="400")
         .sidebar__inner
             ul.sidebar__items 
-                each item in sidebar
-                    li.sidebar__item
+                each item,i in sidebar
+                    li.sidebar__item(data-aos="fade-up" data-aos-delay=`${i+1}00`)
                         a(href=`${item.link}` title=`${item.title}` class!=(item.title == titlePage ? "sidebar--current" : "")).sidebar__link!=item.title

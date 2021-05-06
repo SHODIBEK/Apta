@@ -1,0 +1,61 @@
+mixin smi(data)
+    - data = data || {}
+
+    -
+        var smi = [
+            {
+                image: 'smi-1',
+                date: '21 Январь, 2021 / kun.uz',
+                title: 'Apta Networking club 2020',
+                subtitle: 'Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров'
+            },
+            {
+                image: 'smi-2',
+                date: '21 Январь, 2021 / my5',
+                title: 'Передача май фай говорит о нас и о наших достижениях',
+                subtitle: 'Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров'
+            },
+            {
+                image: 'smi-3',
+                date: '21 Январь, 2021 / zamon',
+                title: 'Прошел конгрес Партнеров и Членов Ассоциации Туристических организации',
+                subtitle: 'Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров'
+            },
+            {
+                image: 'smi-4',
+                date: '21 Январь, 2021 / uzreport tv',
+                title: 'Развитие сельского туризма в Узбекистане',
+                subtitle: 'Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров'
+            },
+            {
+                image: 'smi-5',
+                date: '21 Январь, 2021 / turizm',
+                title: 'Развития туризма в Узбекистане',
+                subtitle: 'Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров'
+            },
+            {
+                image: 'smi-6',
+                date: '21 Январь, 2021 / samarqand',
+                title: 'Заголовок новости может быть две строки или может быть больше в три строки',
+                subtitle: 'Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров'
+            },
+        ]
+    ul.smi__items.row
+        each item,i in smi
+            if i < data
+                li.smi__item.col-ms-12.col-md-6.col-lg-12(data-aos="fade-up" data-aos-delay=`${i+1}00`)
+                    a(href="smi-inner.html").smi__link
+                        .smi__thumb.ratio-container
+                            img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                            data-sizes="auto"
+                            data-src=`./images/smi/${item.image}.jpg`
+                            data-srcset=`./images/smi/${item.image}.jpg 300w,
+                            ./images/smi/${item.image}.jpg 600w,
+                            ./images/smi/${item.image}.jpg 900w`).smi__img.lazyload.blur-up
+                        .smi__block 
+                            date.smi__date.date!=item.date 
+                            h3.smi__title.h3!=item.title 
+                            p.smi__subtitle.p!=item.subtitle
+                            .smi__view.view
+                                +icon('eye',{w: 16, h: 10, cls: "view__icon"})
+                                span 156

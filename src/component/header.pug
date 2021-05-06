@@ -12,21 +12,21 @@ mixin header(data)
             }
         ]
     //BEGIN header
-    header.header#header(class!=headerClass)
+    header.header#header(class!=headerClass data-aos="fade-up")
         .header__top
             .container 
                 .header__top-wrapper.d-flex.align-center.justify-between
-                    .logo-block
+                    .logo-block(data-aos="fade-up" data-aos-delay="200")
                         a(href="/").logo-block__link 
                             img(src="logo.png", alt="logo").logo.logo-block__img
                             span.logo-block__text
                                 | Ассоциация Частных Туристических  Организаций Узбекистана
-                    .header__top-info.header__info.d-flex.align-center
+                    .header__top-info.header__info.d-flex.align-center(data-aos="fade-up" data-aos-delay="300")
                         .header__info-number.d-flex.align-center
                             +icon('call',{w: 15, h: 15, cls: "header__info-icon"})
                             .header__info-text
                                 | +998 71 <span>233 51 78</span>
-                        .header__lang.lang-switcher.js-toggle-active
+                        .header__lang.lang-switcher.js-toggle-active(data-aos="fade-up" data-aos-delay="400")
                             +languages()
                     .mobile-menu__btn.js-mobile__btn 
                         .burger.burger-arrow.burger-right
@@ -38,6 +38,6 @@ mixin header(data)
                     .burger.burger-arrow.burger-right
                         .burger-lines
             +menu(title)
-            include socials
+            +socials()
         .mobile-menu--bg
     //END header

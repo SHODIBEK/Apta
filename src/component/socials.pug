@@ -1,26 +1,29 @@
--
-    var socials = [
-        {
-            name: 'Facebook',
-            icon: 'Facebook'
-        },
-        {
-            name: 'Twitter',
-            icon: 'Twitter'
-        },
-        {
-            name: 'YouTube',
-            icon: 'YouTube'
-        },
-        {
-            name: 'LinkedIn',
-            icon: 'in'
-        },
-    ]
+mixin socials(data)
+    - data = data || {}
 
-.social 
-    ul.social__list
-        each item in socials
-            li.social__item
-                a(href="#").social__link.social--hover
-                    +icon(`${item.icon}`,{cls: `social__icon social__icon-${item.name}`})
+    -
+        var socials = [
+            {
+                name: 'Facebook',
+                icon: 'Facebook'
+            },
+            {
+                name: 'Twitter',
+                icon: 'Twitter'
+            },
+            {
+                name: 'YouTube',
+                icon: 'YouTube'
+            },
+            {
+                name: 'LinkedIn',
+                icon: 'in'
+            },
+        ]
+
+    .social 
+        ul.social__list
+            each item,i in socials
+                li.social__item(data-aos="fade-up" data-aos-delay=`${i+1}00`)
+                    a(href="#").social__link.social--hover
+                        +icon(`${item.icon}`,{cls: `social__icon`})

@@ -1,0 +1,40 @@
+mixin archive(data)
+    - data = data || {}
+    -
+        var archive = [
+            {
+                title: 'Бухарская область заинтересована в развитии CBT',
+            },
+            {
+                title: 'В фокусе внимания экспертов АЧТО – туристический сбор',
+            },
+            {
+                title: 'Эффективная дискуссия помогает выявить и решить проблемы',
+            },
+            {
+                title: 'Увидеть Ташкент и отдохнуть в семейном гостевом доме',
+            },
+            {
+                title: 'Алтыарыкский район имеет отличный потенциал для развития CBT-туризма',
+            },
+            {
+                title: 'Организация эффективной деятельности семейных гостевых домов в Шахриса',
+            },
+        ]
+    ul.archive__items.row
+        each item,i in archive
+            if (i < data)
+                li.archive__item.col-sm-12.col-md-6.col-lg-6(data-aos="fade-up" data-aos-delay=`${i+1}00`)
+                    a(href="archive.html").archive__link
+                        .archive__image.ratio-container
+                            img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+                            data-sizes="auto"
+                            data-src=`./images/archive/${i+1}.jpg`
+                            data-srcset=`./images/archive/${i+1}.jpg 300w,
+                            ./images/archive/${i+1}.jpg 600w,
+                            ./images/archive/${i+1}.jpg 900w`).lazyload.blur-up
+                        date.archive__date.date 
+                            | 21 Январь, 2021
+                        h3.archive__title.h3!=item.title
+                        .btn.btn-white.archive__btn
+                            | Читать больше

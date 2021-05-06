@@ -2,13 +2,18 @@
     &__slide {
         display: flex;
 
-        @include smobile {
+        @include mobile {
             flex-direction: column;
         }
     }
 
     &__wrapper {
         position: relative;
+        display: flex;
+
+        @include mobile {
+            flex-direction: column;
+        }
     }
 
     &__header {
@@ -42,8 +47,8 @@
         height: 0;
         padding-bottom: 760px;
         overflow: hidden;
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 0 0 100%;
+        max-width: 100%;
 
         &::before {
             content: '';
@@ -58,8 +63,6 @@
 
         @include smobile {
             padding-bottom: 70%;
-            flex: 0 0 100%;
-            max-width: 100%;
         }
 
         img {
@@ -74,20 +77,31 @@
         }
     }
 
-    &__block {
-        padding: rem(100) rem(80);
-        max-width: 50%;
-        background-color: var(--primary-color);
+    &__slider {
+        width: 50%;
 
         @include mobile {
-            padding: rem(32);
+            width: 100%;
+        }
+    }
+
+    &__block {
+        padding: rem(100) rem(80);
+        width: 50%;
+        background-color: var(--primary-color);
+
+        @media screen and (max-width: 1300px){
+            padding: rem(50);
         }
 
-        @include smobile {
-            padding-left: 0;
-            padding-right: 0;
-            max-width: 100%;
+        @include mobile {
+            padding: rem(30);
+            width: 100%;
         }
+    }
+
+    &__item {
+        width: 100%;
     }
 
     &__title {
@@ -107,10 +121,10 @@
 
     .swiper-controls {
         bottom: 70px;
-        left: 0;
+        left: 50%;
         right: unset;
-        width: 50%;
         justify-content: center;
+        transform: translateX(-50%);
 
         @include smobile {
             top: 55vw;
@@ -159,6 +173,11 @@
         margin: auto;
         width: calc(100% - 50px);
         height: calc(100% - 50px);
+
+        @include mobile {
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+        }
     }
 
     &__text {

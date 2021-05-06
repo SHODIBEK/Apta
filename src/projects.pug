@@ -1,0 +1,46 @@
+extends pug/base
+
+append vars
+    - title = 'Наши проекты'
+    - titlePage = 'Проекты'
+    - body.classList = 'inner-page'
+    -
+        var sidebar = [
+            { title: 'CBT Uzbekistan', link: 'projects-inner.html'}, 
+            { title: 'Tashkent travel mart', link: 'projects-inner.html'},
+            { title: 'APTA Networking Club', link: 'projects-inner.html'},
+            { title: 'Future Growth Initiative', link: 'projects-inner.html'},
+            { title: 'Model for Sustainable Tourism', link: 'projects-inner.html'},
+            { title: 'Strengthening rural and ecotourism through business', link: 'projects-inner.html'},
+        ]
+block content
+    +header()
+    // Контент
+    section.main(data-aos="fade-up" data-aos-delay="200")
+        .main__wrapper
+            .title
+                .container
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
+            .white-wrapper
+                .main-content
+                    +aside(sidebar)
+                    .content(data-aos="fade-up" data-aos-delay="400")
+                        .project-section
+                            .project-section__items
+                                each item,i in sidebar
+                                    .project-section__item(data-aos="fade-up" data-aos-delay=`${i+2}00`)
+                                        a(href!=item.link).project-block
+                                            .ratio-container.project-block__image
+                                                img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", 
+                                                ata-sizes="auto"
+                                                data-src=`./images/projects/project-${i}.jpg`
+                                                data-srcset=`./images/projects/project-${i}.jpg 300w,
+                                                ./images/projects/project-${i}.jpg 600w,
+                                                ./images/projects/project-${i}.jpg 900w`
+                                                alt="").lazyload.blur-up
+                                            .project-block__bottom
+                                                .project-block__name!=item.title
+                                                .project-block__btn.btn.btn-white 
+                                                    | Подробнее
+                                            .project-block__count!=`0${i+1}`
+    +footer()

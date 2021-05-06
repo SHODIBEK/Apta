@@ -80,6 +80,16 @@
     @return $pixels / $context * 1rem;
 }
 
+@function em($pixels, $context: $main-font-size) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+    @return $pixels / $context * 1em;
+}
+
 @mixin css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px) {
     #{$property}: #{$max-size}#{$unit};
     #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
@@ -90,4 +100,23 @@
     @media (min-width: #{$max-width}#{$unit}) {
         #{$property}: #{$max-size}#{$unit}
     }
+}
+
+%bgimage {
+	background: url('../images/icons/image.svg') var(--primary-color) no-repeat center;
+	background-size: 25% 25%;
+}
+
+%gradient {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background: linear-gradient(0deg, rgba(5,44,88,0.5858718487394958) 30%, rgba(0,212,255,0) 100%);
+	}
 }

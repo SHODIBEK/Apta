@@ -5,25 +5,15 @@
         padding: rem(50) 0;
     }
     &-block {
-        position: relative;
         display: block;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, rgba(5,44,88,0.5858718487394958) 0, rgba(0,212,255,0) 100%);
-        }
+        @extend %gradient;
         
         &__image {
-            display: block;
-            max-width: 100%;
-            height: 450px;
-            object-fit: cover;
-            object-position: center;
+            padding-bottom: 450px;
+
+            @include smobile {
+                padding-bottom: 350px;
+            }
         }
     
         &__name {
@@ -35,6 +25,7 @@
             font-weight: 600;
             font-size: 24px;
             color: #fff;
+            z-index: 2;
         }
     
         &__count {
@@ -47,6 +38,25 @@
             line-height: 1;
             -webkit-text-stroke: 1px #fff;
             -webkit-text-fill-color: transparent;
+        }
+
+        &__bottom {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+            @media (max-width: 600px) {
+                flex-direction: column;
+            }
+        }
+
+        &__btn {
+            color: #fff;
+            border-color: #fff;
         }
     }
 
@@ -87,6 +97,32 @@
                     background-color: var(--lightGrey-color);
                 }
             }
+        }
+    }
+}
+
+.project-section {
+    &__item {
+        margin-bottom: rem(70);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            margin-bottom: rem(20);
+        }
+    }
+
+    .project-block__name {
+        position: unset;
+        width: 60%;
+        
+        @media (max-width: 600px) {
+            width: 100%;
+            text-align: center;
+            margin-bottom: rem(20);
+            font-size: 22px;
         }
     }
 }

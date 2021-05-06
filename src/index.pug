@@ -12,10 +12,10 @@ append vars
 block content
 	+header()
 	// Контент
-	section.main
+	section.main(data-aos="fade-up" data-aos-delay="200")
 		.main__wrapper
 			section.slider
-				.slider__block
+				.slider__block(data-aos="fade-up" data-aos-delay="300")
 					.swiper-container.slider__js
 						.swiper-wrapper
 							- for(var i = 0; i < 5; i++) {
@@ -35,7 +35,7 @@ block content
 							.swiper-button-prev
 							.swiper-pagination
 							.swiper-button-next
-				.slider-card
+				.slider-card(data-aos="fade-up" data-aos-delay="400")
 					.slider-card__images
 						img(src="./images/director.jpg", alt="")
 					.slider-card__block
@@ -48,21 +48,28 @@ block content
 						.slider__btn 
 							a(href="#").btn.btn-white
 								| Подробнее
-			.banner
+			.banner(data-aos="fade-up" data-aos-delay="400")
 				.container
 					.banner__block
 						img(src="./images/banner.jpg", alt="").banner__image
-			.white-wrapper
+			.white-wrapper(data-aos="fade-up" data-aos-delay="100")
 				section.project
 					.container
-						.project__title.index-title 
+						.project__title.index-title(data-aos="fade-up" data-aos-delay="200")
 							| наши проекты
 						.project__slider.swiper-container
 							.swiper-wrapper
 								- for(var i = 0; i < 3; i++) {
-									.swiper-slide
+									.swiper-slide(data-aos="fade-up" data-aos-delay=`${i+5}00`)
 										a(href="#").project-block
-											img(src=`./images/projects/project-${i}.jpg`, alt="").project-block__image
+											.project-block__image.ratio-container
+												img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", 
+                                                ata-sizes="auto"
+                                                data-src=`./images/projects/project-${i}.jpg`
+                                                data-srcset=`./images/projects/project-${i}.jpg 300w,
+                                                ./images/projects/project-${i}.jpg 600w,
+                                                ./images/projects/project-${i}.jpg 900w`
+                                                alt="").lazyload.blur-up
 											.project-block__name
 												| Названия проекта может быть две
 											.project-block__count!=`0${i+1}`
@@ -70,58 +77,64 @@ block content
 							.swiper-button-prev
 							.swiper-pagination
 							.swiper-button-next
-				section.counters
+				section.counters(data-aos="fade-up" data-aos-delay="200")
 					.container
-						.counters__header.index-title 
+						.counters__header.index-title(data-aos="fade-up" data-aos-delay="400")
 							| ассоциация в цыфрах
 						.counters__items.row
 							- var counters = [ { count: '1999', title: 'год основания ассоциации' }, {  count: '120', title: 'члены ассоциации' }, { count: '35000', title: 'колличество обученых' }, { count: '1500', title: 'проведенных мероприятия' } ]
-							each item in counters
-								.counters__item.col-md-6.col-lg-3
+							each item,i in counters
+								.counters__item.col-md-6.col-lg-3(data-aos="fade-up" data-aos-delay=`${i+5}00`)
 									.counters__circle 
 										span(data-purecounter-start="0" 
 											data-purecounter-end!=item.count
 											class="purecounter")!=item.count
 									.counters__title!=item.title
-				section.news 
+				section.news(data-aos="fade-up" data-aos-delay="200")
 					.container
-						.news__wrapper
-							.news__header.index-title 
+						.news__blocks
+							.news__header.index-title(data-aos="fade-up" data-aos-delay="400")
 								| пресс центр
+								a(href="news.html").link-title
+									| Все новости
 							.news__items
 								.news__slider.swiper-container
 									.swiper-wrapper
 										- for(var i = 0; i < 3; i++) {
-											.swiper-slide
+											.swiper-slide(data-aos="fade-up" data-aos-delay=`${i+5}00`)
 												a(href="#").news__item
-													.news__picture 
-														img(src=`./images/news/news-${i}.jpg`, alt="").news__img 
-													.news__date
+													.news__picture.ratio-container
+														img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", alt=""
+														data-sizes="auto"
+														data-src=`./images/news/news-${i}.jpg`
+														data-srcset=`./images/news/news-${i}.jpg 300w,
+														./images/news/news-${i}.jpg 600w,
+														./images/news/news-${i}.jpg 900w`
+														).news__img.lazyload.blur-up
+													.news__date.date
 														| 21 Январь, 2021
-													.news__title
+													.news__title.h3
 														| Заголовок новости может быть две строки или может быть больше в три строки  
-													.news__link.btn.btn-white
+													.btn.btn-white
 														| Читать больше
 										- }
 									.swiper-pagination
-							a(href="news.html").link-title
-								| Все новости
-				section.index-event
+				section.index-event(data-aos="fade-up" data-aos-delay="200")
 					.index-event__wrapper
 						+sliderEvent()
-				section.association
+				section.association(data-aos="fade-up" data-aos-delay="200")
 					.container 
-						.association__header.index-title 
+						.association__header.index-title(data-aos="fade-up" data-aos-delay="400")
 							| Как вступить в ассоциацию
 						.association__block
 							+tourItem('row', 'col-md-6 col-lg-4', 3)
-				section.last-section
+				section.last-section(data-aos="fade-up" data-aos-delay="200")
 					.container 
-						.last-section__header.index-title 
+						.last-section__header.index-title(data-aos="fade-up" data-aos-delay="400")
 							| члены ассоциации
 						.last-section__items
 							- for(var i = 0; i < 5; i++) {
-								.last-section__item
+								.last-section__item(data-aos="fade-up" data-aos-delay=`${i+5}00`)
 									img(src=`./images/logos/logo-${i+1}.png`, alt="").last-section__img
 							- }
 	+footer()

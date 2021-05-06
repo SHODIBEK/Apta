@@ -9,7 +9,7 @@
             text: 'рекламная площадка'
         },
         {
-            icon: 'promotion',
+            icon: 'tourism',
             text: 'развитие туриндустрии'
         },
     ]
@@ -55,8 +55,8 @@
 
 mixin event-icon()
     ul.event__icons
-        each item in icons
-            li.event__icon
+        each item, i in icons
+            li.event__icon(data-aos="fade-up" data-aos-delay=`${i+1}00`)
                 .event__circle
                     +icon(`${item.icon}`,{cls: "event__svg"})
                 .event__text!=item.text
@@ -65,17 +65,49 @@ mixin sliderEvent()
     .swiper-container.index-event__slider
         .swiper-wrapper
             each item in event
-                .swiper-slide
+                .swiper-slide(data-aos="fade-up" data-aos-delay="200")
                     .index-event__slide
                         .index-event__img
                             img(src=`./images/events/${item.image}.jpg`, alt="")
-                        .index-event__block 
-                            .index-event__header
-                                | наши мероприятия
-                            .index-event__title!=item.title
-                            .index-event__subtitle!=item.subtitle
-                            +event-icon()
         .swiper-controls
             .swiper-button-prev
             .swiper-pagination
             .swiper-button-next
+    .index-event__block
+        .index-event__header(data-aos="fade-up" data-aos-delay="400")
+            | наши мероприятия
+        .swiper-container.index-event__items
+            .swiper-wrapper
+                each item in event
+                    .swiper-slide(data-aos="fade-up" data-aos-delay="600")
+                        .index-event__item
+                            .index-event__title!=item.title
+                            .index-event__subtitle!=item.subtitle
+                            +event-icon()
+
+mixin event()
+    .events-section__items
+        each item,i in event
+            .events-section__item(data-aos="fade-up" data-aos-delay=`${i+1}00`)
+                .events-section__top
+                    .events-section__header!=item.header
+                    a(href="#").events-section__allink
+                        | посмотреть все
+                .events-section__center 
+                    .events-section__img.ratio-container
+                        img(src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", 
+                        data-sizes="auto"
+                        data-src=`./images/events/${item.image}.jpg`
+                        data-srcset=`./images/events/${item.image}.jpg 300w,
+                        ./images/events/${item.image}.jpg 600w,
+                        ./images/events/${item.image}.jpg 900w`
+                        alt="").lazyload.blur-up
+                    .events-section__icons 
+                        +event-icon()
+                .events-section__bottom 
+                    .events-section__date 
+                        | 21 Январь, 2021
+                    h3.events-section__title!=item.title 
+                    p.events-section__subtitle!=item.subtitle
+                    a(href="#").btn.btn-blue.events-section__btn
+                        | Подробнее 

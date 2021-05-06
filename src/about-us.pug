@@ -10,23 +10,28 @@ append vars
             { title: 'История', link: 'history.html'}, 
             { title: 'Руководство и команда', link: 'team.html'}, 
             { title: 'Партнёры', link: 'partners.html'}, 
-            { title: 'Контакты', link: 'contacts.html'}
+            { title: 'Контакты', link: 'contacts.html'},
+            { title: 'Члены ассоциации', link: 'assosation-members.html'}
         ]
 block content
     +header()
     // Контент
-    section.main
+    section.main(data-aos="fade-up" data-aos-delay="200")
         .main__wrapper
             .title
                 .container
-                    h1.title__name!=titlePage
+                    h1.title__name(data-aos="fade-up" data-aos-delay="400")!=titlePage
             .white-wrapper
                 .main-content
                     +aside(sidebar)
                     .content
-                        .default-section
-                            .iframe-container
-                                <iframe src="https://www.youtube.com/embed/GNqZaPM5NeU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        .default-section(data-aos="fade-up" data-aos-delay="200")
+                            .video-gallery__video.ratio-container
+                                    video(
+                                    class="js-player"
+                                    preload="auto"
+                                    data-poster=`./images/video/1.jpg`)
+                                        source(src="./images/video/oceans.mp4" type="video/mp4")
                             p(style="margin-left:100px;margin-right: 190px")
                                 | Сегодня, когда в стране развиваются многие направления туризма, думаю, что вы сможете найти здесь новых партнеров, развить в Узбекистане свой бизнес, а правительство в свою очередь готово поддержать все ваши инициативы».
                             p(style="margin-left:100px;margin-right: 190px")
