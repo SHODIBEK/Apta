@@ -14,13 +14,8 @@
     }
 
     &__items {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        align-items: center;
-        grid-gap: 30px;
-
-        @include mobile {
-            grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 1024px) {
+            padding-bottom: 30px;
         }
     }
 
@@ -33,5 +28,41 @@
         display: block;
         max-width: 100%;
         height: auto;
+    }
+
+    .swiper-pagination {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        @media (min-width: 1024px) {
+            display: none;
+        }
+
+        &-bullet {
+            border-color: var(--lightGrey-color);
+            &-active {
+                border-color: var(--primary-color);
+                background-color: var(--primary-color);
+            }
+        }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next {
+        right: 10px;
     }
 }

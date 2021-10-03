@@ -24,6 +24,11 @@
         padding-bottom: 69.4%;
         overflow: hidden;
 
+        @media (min-height: 1080px) {
+            padding: 0;
+            height: calc(100vh - var(--headerHeight) - 30px);
+        }
+
         &::before {
             content: '';
             position: absolute;
@@ -47,6 +52,10 @@
         object-position: center;
         transition: 2s;
         transform: scale(1) rotate(0deg);
+
+        @media (min-height: 1080px) {
+            position: unset;
+        }
     }
 
     &__captions {
@@ -88,9 +97,11 @@
 
     &-card {
         position: absolute;
-        bottom: 0;
+        top: 0;
         right: 4vw;
         width: calc(100% - 65% - 8vw);
+        height: 100%;
+        background-color: #fff;
 
         @include mobile {
             display: none;
@@ -140,10 +151,6 @@
             font-family: $secondary-font;
             @include css-lock(14,18,1024,1910);
             color: var(--grey-color);
-        }
-
-        &__btn {
-
         }
     }
 }
@@ -200,6 +207,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: 25% auto;
+            z-index: 10;
         }
 
         &-prev {

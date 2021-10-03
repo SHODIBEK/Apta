@@ -16,10 +16,12 @@ function headerHeight() {
 	let lastScrollTop = 0;
 	$(window).scroll(function (event) {
 		let st = $(this).scrollTop();
-		if (st > lastScrollTop) {
-			$('header').addClass('header--scroll');
-		} else {
-			$('header').removeClass('header--scroll');
+		if(!$('body').hasClass('mobile-menu--open')) {
+			if (st > lastScrollTop) {
+				$('header').addClass('header--scroll');
+			} else {
+				$('header').removeClass('header--scroll');
+			}
 		}
 		lastScrollTop = st;
 	});
@@ -43,11 +45,9 @@ function mobileLange() {
 		});
 	}
 }
+headerHeight();
+mobileLange();
 
-$(document).on('ready', () => {
-	headerHeight();
-	mobileLange();
-});
 $(window).on('resize', () => {
 	headerHeight();
 	mobileLange();
